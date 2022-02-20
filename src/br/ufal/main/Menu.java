@@ -12,10 +12,10 @@ import br.ufal.main.model.Sale;
 import br.ufal.main.model.Timecard;
 
 public class Menu {
-
+	DatabaseConnection databaseConnection = new DatabaseConnection();
+	Scanner input = new Scanner(System.in);
+	
 	public void menuOptions() {
-		DatabaseConnection databaseConnection = new DatabaseConnection();
-		Scanner input = new Scanner(System.in);
 		
 		int id, pointType, employeeType, option;
 		double resultSalary = 0, saleValue = 0;		
@@ -36,34 +36,11 @@ public class Menu {
 			
 			switch (option) {
 			case 1:	
-				System.out.println("Informe o tipo do empregado: ");
-				System.out.println("\t(1) Hourly\t(2) Salaried \t(3) Commissioned");
-				int typeEmployee = input.nextInt();
-				
-				Employee employee = null;
-				if(typeEmployee == 1) employee = new Hourly();
-				if(typeEmployee == 2) employee = new Salaried();
-				if(typeEmployee == 3) {
-					employee = new Commissioned();
-					System.out.println("Informe o percentual da comissão: ");
-					((Commissioned) employee).setCommissionPercentage(input.nextDouble());
-				}
-				
-				System.out.println("Informe o nome do empregado: ");
-				employee.setName(input.next());
-				
-				System.out.println("Informe o endereço: ");
-				employee.setAddress(input.next());
-				
-				
-				databaseConnection.addEmployee(employee);
+				this.addEmployee();
 				break;
 
 			case 2:
-				
-				for (Employee employeeIterator : databaseConnection.getEmployees()) {
-					System.out.println(employeeIterator.toString());
-				}
+				this.listEmployees();
 				break;
 				
 			case 3:
@@ -99,9 +76,7 @@ public class Menu {
 				
 			case 5:
 				
-				for (Timecard timecardIterator : databaseConnection.getTimecards()) {
-					System.out.println(timecardIterator.toString());
-				}
+				this.listTimecards();
 				break;
 				
 			case 6: 
@@ -141,9 +116,7 @@ public class Menu {
 				break;
 				
 			case 8:
-				for (Sale saleIterator : databaseConnection.getSales()) {
-					System.out.println(saleIterator.toString());
-				}
+				this.showSaleResult();
 				break;
 				
 			case 9:
@@ -154,6 +127,48 @@ public class Menu {
 				break;
 			}
 		} while (option != 0);
+	}
+	
+	public void addEmployee() {
+		System.out.println("Informe o tipo do empregado: ");
+		System.out.println("\t(1) Hourly\t(2) Salaried \t(3) Commissioned");
+		int typeEmployee = input.nextInt();
+		
+		Employee employee = null;
+		if(typeEmployee == 1) employee = new Hourly();
+		if(typeEmployee == 2) employee = new Salaried();
+		if(typeEmployee == 3) {
+			employee = new Commissioned();
+			System.out.println("Informe o percentual da comissão: ");
+			((Commissioned) employee).setCommissionPercentage(input.nextDouble());
+		}
+		
+		System.out.println("Informe o nome do empregado: ");
+		employee.setName(input.next());
+		
+		System.out.println("Informe o endereço: ");
+		employee.setAddress(input.next());
+		
+		
+		databaseConnection.addEmployee(employee);
+	}
+	
+	public void listEmployees() {
+		for (Employee employeeIterator : databaseConnection.getEmployees()) {
+			System.out.println(employeeIterator.toString());
+		}
+	}
+	
+	public void listTimecards() {
+		for (Timecard timecardIterator : databaseConnection.getTimecards()) {
+			System.out.println(timecardIterator.toString());
+		}
+	}
+	
+	public void showSaleResult() {
+		for (Sale saleIterator : databaseConnection.getSales()) {
+			System.out.println(saleIterator.toString());
+		}
 	}
 
 }
