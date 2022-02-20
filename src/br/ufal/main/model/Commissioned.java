@@ -30,14 +30,17 @@ public class Commissioned extends Employee {
 	public void setCommission(double commission) {
 		this.commission = commission;
 	}
+	
+	public double multipliesCommissionPercentage(double saleValue) {
+		return saleValue * this.commissionPercentage;
+	}
 
 	public double calculateCommission(ArrayList<Sale> sales) {
 		double commission = 0;
-		System.out.println("entrou na calculateCommission");
 		
 		for (Sale sale : sales) {
 			if(sale.getId() == this.getId()) {
-				commission += sale.getSaleValue() * this.commissionPercentage;
+				commission += multipliesCommissionPercentage(sale.getSaleValue());
 			}
 		}
 		return commission;
