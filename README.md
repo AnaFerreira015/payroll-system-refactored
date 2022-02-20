@@ -1,7 +1,8 @@
 # Payrooll System Refactored
 
 ## Long Method
-MÈtodos muito longos s„o difÌceis de ler e torna-se difÌcil acomodar novas alteraÁıes nele.
+M√©todos muito longos s√£o dif√≠ceis de ler e torna-se dif√≠cil acomodar novas altera√ß√µes nele.
 Classes encontradas:
 1. Commissioned
-O mÈtodo `calculateCommission` multiplicava a porcentagem diretamente no c·lculo. Como soluÁ„o, criei o mÈtodo `multipliesCommissionPercentage` e ele È chamado dentro do mÈtodo `calculateCommission`.
+
+O m√©todo `calculateCommission` multiplicava a porcentagem diretamente no c√°lculo. Como solu√ß√£o, criei o m√©todo `multipliesCommissionPercentage` e ele √© chamado dentro do m√©todo `calculateCommission`.
