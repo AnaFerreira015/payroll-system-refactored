@@ -7,9 +7,6 @@ public class Sale {
 	private int idEmployee, paymentMethod;
 	private double saleValue;
 	
-	public Date getDate() {
-		return date;
-	}
 	public void setDate(Date date) {
 		this.date = date;
 	}
@@ -25,9 +22,6 @@ public class Sale {
 	public void setSaleValue(double saleValue) {
 		this.saleValue = saleValue;
 	}	
-	public int getPaymentMethod() {
-		return paymentMethod;
-	}
 	public void setPaymentMethod(int paymentMethod) {
 		this.paymentMethod = paymentMethod;
 	}

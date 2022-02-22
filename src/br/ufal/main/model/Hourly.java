@@ -6,14 +6,6 @@ import java.util.Date;
 
 public class Hourly extends Employee {
 	private double salary, priceHour = 60 * 60 * 1000;
-
-	public double getSalary() {
-		return salary;
-	}
-
-	public void setSalary(double salary) {
-		this.salary = salary;
-	}
 	
 	public double calculateSalary(ArrayList<Timecard> timecards) {
 		Date entryTimecard = null;
